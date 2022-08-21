@@ -18,7 +18,7 @@ class Solution(object):
             
            
             return pow_of_two(num/divisor,divisor*2)
-        return pow_of_two(abs(n),2)
+        return pow_of_two(n,2)
         """
         :type n: int
         :rtype: bool
