@@ -3,9 +3,10 @@ class Solution(object):
         nums.sort()
         maxFrequency=l=r=0
         tempoK=k
-        while r<len(nums):
-            if len(nums)==1:
+        if len(nums)==1:
                 return 1
+        while r<len(nums):
+            
             if l==r:
                 r=l+1
            
