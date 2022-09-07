@@ -4,19 +4,18 @@ class Solution(object):
             return "0"
         else:
             mono_stack=[]
-            removed=0
-            for i in range(len(num)):
-               while mono_stack and removed<k and num[i]<mono_stack[-1]:
-                   
-                   mono_stack.pop()
-                   removed+=1
-               mono_stack.append(num[i])
-            if removed<k:
             
-                return str(int("".join(mono_stack[:len(mono_stack)-(k-removed)])))
-                
-            else:
-                 return str(int("".join(mono_stack)))
+            for i in range(len(num)):
+               while mono_stack and k and num[i]<mono_stack[-1]:
+                   mono_stack.pop()
+                   k-=1
+               if len(mono_stack) or num[i]!='0':
+                    mono_stack.append(num[i])
+            
+            if k:
+                mono_stack=mono_stack[:-k]
+            
+            return "".join(mono_stack) if len(mono_stack) else "0"
                
                 
         
