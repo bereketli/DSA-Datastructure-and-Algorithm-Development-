@@ -1,63 +1,29 @@
 class Solution(object):
     def longestSubarray(self, nums, limit):
-     
-        inc_deque=[]
-        dec_deque=[]
-        maxlen=0
-        front_pointer=0
-        rear_pointer=0
-        inc_deque.append(0)
-        dec_deque.append(0)
-        while rear_pointer<(len(nums)):
-            
-            
-            
-              
-               
-              
-            while len(inc_deque)>0 and nums[inc_deque[-1]]>nums[rear_pointer]:
-                     inc_deque.pop()
-            if(rear_pointer!=0):
-                  inc_deque.append(rear_pointer)
-              
-            while len(dec_deque)>0 and nums[dec_deque[-1]]<nums[rear_pointer]:
-                    dec_deque.pop()
-            if(rear_pointer!=0):
-                    dec_deque.append(rear_pointer)
-            if nums[dec_deque[0]]-nums[inc_deque[0]]<=limit:
-               
-                       maxlen=max(maxlen,rear_pointer-front_pointer+1)
-               
-            while nums[dec_deque[0]]-nums[inc_deque[0]]>limit:
-                
-            
-                 if(front_pointer==inc_deque[0]):
-                     inc_deque.pop(0)
-                 elif(front_pointer==dec_deque[0]):
-                     dec_deque.pop(0)
-                
-                 front_pointer+=1
+        inc_mono_que=[] 
+        dec_mono_que=[]   
+        max_len=l=r=0
+        def increasing_que(num):
+             while inc_mono_que and inc_mono_que[-1]>num:
+                 inc_mono_que.pop()
+             inc_mono_que.append(num)
+        def decreasing_que(num):
+             while dec_mono_que and dec_mono_que[-1]<num:
+                   dec_mono_que.pop()
+             dec_mono_que.append(num)
+        while r<len(nums):
+             increasing_que(nums[r])
+             decreasing_que(nums[r])
            
-            rear_pointer+=1
-           
-    
-        return maxlen
-                
+             if l<r and inc_mono_que and dec_mono_que and abs(dec_mono_que[0]-inc_mono_que[0])>limit:
+                 if nums[l]==dec_mono_que[0]:
+                      dec_mono_que.pop(0)
+                 if nums[l] ==inc_mono_que[0]:
+                      inc_mono_que.pop(0)
+                 l+=1
+             max_len=max(max_len,r-l+1)
+             r+=1
             
-        
-#         queue=[]
-#         maxlen=0
-        
-               
-#                 queue.append(num)
-#                 while(max(queue)-min(queue)>limit):
-#                     queue.pop(0)
-#                 maxlen=max(len(queue),maxlen)
-                
-#         return maxlen
-        """
-        :type nums: List[int]
-        :type limit: int
-        :rtype: int
-        """
+        return max_len
+
         
