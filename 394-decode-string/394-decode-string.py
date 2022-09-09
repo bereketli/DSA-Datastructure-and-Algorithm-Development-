@@ -1,19 +1,32 @@
 class Solution(object):
+    index=0
     def decodeString(self, s):
-        stack=[]
-        for string in s:
-            if string!="]":
-                stack.append(string)
-            else:
-                multiplier=""
-                tempostore=""
-                while stack[-1]!="[":
-                    tempostore=stack.pop()+tempostore
-                stack.pop()
-                while stack and stack[-1].isdigit():
-                    multiplier=stack.pop()+multiplier
-                stack.append(int(multiplier)*tempostore)
-        return "".join(stack)
+        
+        def decoded():
+             num=""
+             ans=""
+             while self.index<len(s) and s[self.index]!="]":
+                memo=""
+                if s[self.index].isdigit():  #check if it is a number
+                   
+                    num+=s[self.index]
+                    self.index+=1
+                    continue
+                elif s[self.index]=="[": #recall the function recursively for anew                                             bracket
+                                           #and return new brackets result
+                    self.index+=1
+                    memo=decoded()
+                 
+                    self.index+=1
+                else:                      #if the value is  english alphabet
+                    ans+=s[self.index]
+                    self.index+=1
+                    continue 
+                if num :                    # multiply the result
+                    ans+=(memo)*int(num)
+                    num=""
+             return ans
+        return decoded()
             
         """
         :type s: str
