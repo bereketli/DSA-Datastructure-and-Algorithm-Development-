@@ -12,8 +12,5 @@ class Solution(object):
             output[index]=prices[index]
         return output
         
-        """
-        :type prices: List[int]
-        :rtype: List[int]
-        """
+     
         
