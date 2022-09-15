@@ -3,8 +3,6 @@ class Solution(object):
            ans,right=0,0
            odd_indeces=[]
            left=-1
-            
-           
            while right<len(nums):
                 if nums[right]%2!=0:
                     odd_indeces.append(right)
