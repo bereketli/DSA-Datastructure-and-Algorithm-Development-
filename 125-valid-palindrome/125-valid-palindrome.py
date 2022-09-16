@@ -2,8 +2,7 @@ class Solution(object):
     def isPalindrome(self, s):
         
         alpha="".join(ch for ch in s if ch.isalnum())
-        if len(alpha)==0:
-            return True
+       
         alpha=alpha.lower()
         left=0
         right=len(alpha)-1
