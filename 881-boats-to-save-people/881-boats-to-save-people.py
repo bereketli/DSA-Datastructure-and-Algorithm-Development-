@@ -10,12 +10,11 @@ class Solution(object):
                 count+=1
                 left+=1
                 right-=1
-                if right==left:
-                    count+=1
+              
             else:
                 count+=1
                 right-=1
-                if right==left:
+            if right==left:
                     count+=1
         return count
         """
