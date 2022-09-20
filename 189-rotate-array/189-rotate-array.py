@@ -1,28 +1,18 @@
 class Solution(object):
     def rotate(self, nums, k):
-        store=[]
-        if k==len(nums):
-            return
+        nums.reverse()
+        k =k % len(nums)
+        right=k-1
+        left=0
+        while left < right:
+            nums[left], nums[right] = nums[right], nums[left]
+            right-=1
+            left +=1
+        l = k
+        r = len(nums)-1
+        while l<r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l +=1
+            r -=1
             
-        if len(nums)<k:
-            k=k %len(nums)
-        for i in range(k):
-               store.append(nums.pop())
-        store.reverse()
-        play=store+nums
-       
-        for i in range(len(play)):
-              if i <len(nums):
-                  nums[i]=play[i]
-              else:
-                nums.append(play[i])
-            
-            
-            
-        
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: None Do not return anything, modify nums in-place instead.
-        """
         
