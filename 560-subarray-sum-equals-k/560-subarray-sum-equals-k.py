@@ -1,22 +1,17 @@
 class Solution(object):
     def subarraySum(self, nums, k):
-        prefix_store ={0:1}
-        prefix_sum =0
-        count =0
+        prefix_sum = {0:1}
+        count,summed = 0,0
         for num in nums:
-          
-            prefix_sum += num;
-            if prefix_sum -k in prefix_store:
-                count+=prefix_store[prefix_sum-k]
-            if prefix_sum not in prefix_store:
-                prefix_store[prefix_sum] =1
+            summed += num
+            if summed - k in prefix_sum:
+                count += prefix_sum[summed - k]
+            if summed not in prefix_sum:
+                prefix_sum[summed] = 1
             else:
-                prefix_store[prefix_sum] +=1
-           
-           
+                prefix_sum[summed] += 1
+        return count
         
-        return count 
-                
         
         """
         :type nums: List[int]
