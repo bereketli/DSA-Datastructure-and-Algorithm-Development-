@@ -1,23 +1,21 @@
 class Solution(object):
     def numberOfSubarrays(self, nums, k):
-        dictionary ={0:1}
-        pref_sum =0
-        count =0
-        for i,value in enumerate(nums):
-                nums[i] %=2
-        
-        for num in nums:
+           ans,right=0,0
+           odd_indeces=deque()
+           left=-1
             
-            pref_sum +=num
-            if pref_sum-k in dictionary:
-                count += dictionary[pref_sum - k]
-            if pref_sum in dictionary:
-                dictionary[pref_sum] +=1
-            else:
-                dictionary[pref_sum] =1
-        
-        return count
-                
+           
+           while right<len(nums):
+                if nums[right]%2!=0:
+                    odd_indeces.append(right)
+                if len(odd_indeces)==k:
+                   ans+=odd_indeces[0]-left
+                elif len(odd_indeces)>k:
+                      left=odd_indeces[0]
+                      odd_indeces.popleft()
+                      ans+=odd_indeces[0]-left
+                right+=1
+           return ans
                       
         
  
