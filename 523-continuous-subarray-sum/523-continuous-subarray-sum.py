@@ -1,17 +1,16 @@
 class Solution(object):
     def checkSubarraySum(self, nums, k):
-          remin_index={0:0}
-          summed=0
-          for index,num in enumerate(nums):
-                
-                summed+=num
-               
-                if summed%k not in remin_index:
-                    remin_index[summed%k]=index+1
+          prefix_store = {0:-1}
+          pre_sum =0
+          for i,num in enumerate(nums):
+                pre_sum +=num 
+                if pre_sum % k not in prefix_store:
+                    prefix_store[pre_sum % k] = i
                 else:
-                    if index-remin_index[summed%k]+1>1:
+                    if i-prefix_store[pre_sum % k] >1:
                         return True
           return False
                 
+          
                 
   
