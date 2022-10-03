@@ -1,22 +1,16 @@
 class Solution(object):
     def totalSteps(self, nums):
-        # [7,14,4,14,13,2,6,13]
         output =0
         stack =[]
-        for i in range(len(nums)):
-            tempo_len ,store=0,0
-            while stack and stack[-1][0] <= nums[i]:
-                      top = stack.pop()
-                      tempo_len = max(tempo_len,top[1])
-            if stack:
-                store = tempo_len + 1
-                stack.append([nums[i],store])
-            else:
-                
-                stack.append([nums[i],0])
-                
-            output = max(output , store)
-                
+        for i in range(len(nums)-1,-1,-1):
+            count =0
+            while stack and stack[-1][0] < nums[i]:
+                popped_index  =stack.pop()[1]
+                count = max(count + 1 , popped_index)  
+               
+            stack.append([nums[i], count])
+            output = max(output, count)
+           
         return output
         """
         :type nums: List[int]
