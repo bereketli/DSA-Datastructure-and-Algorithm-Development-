@@ -1,18 +1,21 @@
 class Solution(object):
     def subarraySum(self, nums, k):
-        prefix_sum = {0:1}
-        
-        count, summed = 0, 0
-        
+        # 5
+        # {3, 2, -4, 4}
+        # {0:1 ,3:1 ,5:1, -1:1,  }
+        pre ={0:1}
+        out =0
+        summed =0
         for num in nums:
             summed += num
-            if summed - k in prefix_sum:
-                count += prefix_sum[summed - k]
-            if summed not in prefix_sum:
-                prefix_sum[summed] = 1
+            if summed -k in pre:
+                out += pre[summed - k]
+            if summed in pre :
+                pre[summed] +=1
             else:
-                prefix_sum[summed] += 1
-        return count
+                pre[summed] =1
+        return out
+       
         
         
         """
