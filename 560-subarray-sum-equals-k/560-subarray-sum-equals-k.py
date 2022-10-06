@@ -1,7 +1,9 @@
 class Solution(object):
     def subarraySum(self, nums, k):
         prefix_sum = {0:1}
-        count,summed = 0,0
+        
+        count, summed = 0, 0
+        
         for num in nums:
             summed += num
             if summed - k in prefix_sum:
