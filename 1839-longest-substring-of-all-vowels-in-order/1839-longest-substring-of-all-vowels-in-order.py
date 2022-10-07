@@ -20,7 +20,7 @@ class Solution(object):
                 while l<len(word) and word[l] != "a":
                     l +=1
                 r = l + 1
-                if r<len(word)-1:
+                if r<len(word)-3:
                     count = 1
                 continue
             r += 1
