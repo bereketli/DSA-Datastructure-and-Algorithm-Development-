@@ -5,8 +5,8 @@ class Solution(object):
         l, r =0,0
         while r < len(word):
           
-            if l==0 and word[r] == "a":
-                if word[l] != "a":
+            if l==0 and word[r] == "a" and word[l] !="a":
+              
                    l = r
             elif l == 0 and word[l] != "a":
                 r +=1
