@@ -5,7 +5,7 @@ class Solution(object):
         remain =""
         remain += str(n % (n - 2) )
         
-        remain =str(int(n / (n-2)) % (n - 2)) + remain
+        remain =str(n //(n-2) % (n - 2)) + remain
         
         if remain != "12":
             return True
