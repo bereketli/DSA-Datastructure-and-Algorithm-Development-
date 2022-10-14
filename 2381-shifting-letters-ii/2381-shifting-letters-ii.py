@@ -11,14 +11,14 @@ class Solution(object):
                 if shifts[i][1] < len(s) -1:
                        sindex[shifts[i][1] + 1] -=1  
                 
-        print(sindex)
+       
         output=[]
         prefix =0
-        alphabet ="abcdefghijklmnopqrstuvwxyz"
+        
         for i in range(len(s)):
             prefix +=sindex[i]
            
-            output.append(alphabet[(-97 +ord(s[i]) + prefix) % 26])
+            output.append(chr(97+(-97 +ord(s[i]) + prefix) % 26))
         return "".join(output)
         
         """
