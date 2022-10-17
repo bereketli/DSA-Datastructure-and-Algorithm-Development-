@@ -14,8 +14,11 @@ class Solution(object):
             if s[r] not in dic2:
                 dic2[s[r]]  = 1
             else:
-                dic2[s[r]] +=1
-            if r - l +1 <lenp:
+                dic2[s[r]] +=1       
+                
+                
+                
+            if r - l +1 < lenp:
                 continue
             elif r - l +1 >lenp:
                 dic2[s[l]] -=1
