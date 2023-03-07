@@ -9,8 +9,8 @@ class Solution:
         
          def insert(node):
             if  not node :
-                rt = TreeNode(val )
-                return rt
+                new = TreeNode(val)
+                return new
             if node.val > val:
                 node.left = insert(node.left)
             elif node.val < val:
