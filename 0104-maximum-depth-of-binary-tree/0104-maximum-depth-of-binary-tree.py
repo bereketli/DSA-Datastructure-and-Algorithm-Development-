@@ -12,10 +12,10 @@ class Solution:
             if not node:
                 return 0
             
-            left = depth(node.left)
-            left += 1
-            right = depth(node.right)
-            right += 1
+            left = depth(node.left) + 1
+           
+            right = depth(node.right) + 1
+           
             
             return (max(left,right))
        
