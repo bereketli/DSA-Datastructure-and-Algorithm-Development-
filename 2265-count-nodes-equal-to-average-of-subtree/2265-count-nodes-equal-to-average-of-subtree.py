@@ -9,17 +9,10 @@ class Solution:
         self.count = 0
         def average(node):
             if not node:
-                return
+                return [0, 0]
             left = average(node.left)
             right = average(node.right)
-            if left and right:
-                node_child = [left[0] + right[0] + node.val, left[1] + right[1] + 1]
-            elif left:
-                node_child = [left[0] + node.val, left[1] + 1]
-            elif right:
-                node_child = [right[0] + node.val, right[1] + 1]
-            else:
-                node_child = [node.val, 1]
+            node_child = [left[0] + right[0] + node.val, left[1] + right[1] + 1]
             if node_child[0] // node_child[1] == node.val:
                 self.count += 1
             return node_child
