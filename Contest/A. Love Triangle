@@ -1,0 +1,12 @@
+n = int(input())
+planes = list(map(int, input().split()))
+find_triangle = False
+for i, plane in enumerate(planes):
+    plane3 = planes[plane - 1]
+    if planes[plane3 - 1] == i + 1:
+        find_triangle = True
+        print("YES")
+        break
+if not find_triangle:
+    print("NO")
+    
