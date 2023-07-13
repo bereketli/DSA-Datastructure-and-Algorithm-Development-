@@ -1,0 +1,14 @@
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        memo = {}
+        def find_min(i):
+            if i in memo:
+                return memo[i]
+            if i <= 1:
+                return cost[i]
+            
+            one_step = cost[i] + find_min(i -1)
+            two_step = cost[i] + find_min(i - 2)
+            memo[i] = min(one_step , two_step)
+            return memo[i]
+        return min(find_min(len(cost) -1), find_min(len(cost) - 2))
