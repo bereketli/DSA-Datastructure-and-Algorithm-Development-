@@ -1,0 +1,13 @@
+class Solution:
+    def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+        totalcost = 0
+        sorted_cost = sorted(costs, key= lambda x: (x[0] - x[1]))
+       
+        for i in range(len(costs)):
+            if i < (len(costs) // 2):
+                totalcost += sorted_cost[i][0]
+            else:
+                totalcost += sorted_cost[i][1]
+        
+        return totalcost
+        
